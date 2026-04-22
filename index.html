@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Tool</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Text Tool<span class="accent">_</span></h1>
+      <p class="subtitle">Transform, clean, and analyze your text instantly.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="stats">
+      <span><strong id="word-count">0</strong> words</span>
+      <span><strong id="char-count">0</strong> characters</span>
+    </div>
+
+    <textarea id="text-input" placeholder="Paste or type your text here..."></textarea>
+
+    <div class="controls">
+      <label for="font-select" class="font-label">FONT:</label>
+      <select id="font-select">
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Space Mono', monospace">Space Mono</option>
+        <option value="Georgia, serif">Georgia (Serif)</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Courier New', monospace">Courier New</option>
+        <option value="'Times New Roman', serif">Times New Roman</option>
+        <option value="Verdana, sans-serif">Verdana</option>
+        <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+        <option value="Impact, sans-serif">Impact</option>
+        <option value="'Lucida Console', monospace">Lucida Console</option>
+        <option value="Palatino, serif">Palatino</option>
+      </select>
+    </div>
+
+    <div class="actions">
+      <button onclick="transformText('uppercase')" class="btn">↑ UPPERCASE</button>
+      <button onclick="transformText('lowercase')" class="btn">↓ lowercase</button>
+      <button onclick="transformText('trim')" class="btn">✂ Trim Spaces</button>
+      <button onclick="copyText()" class="btn">⎘ Copy</button>
+      <button onclick="clearText()" class="btn btn-danger">✕ Clear</button>
+    </div>
+
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
