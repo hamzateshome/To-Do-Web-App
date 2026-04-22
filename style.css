@@ -1,0 +1,233 @@
+/* ===== CSS Reset & Base ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f2ec;
+  --fg: #1a1e2e;
+  --card: #eae6de;
+  --border: #d4cfc5;
+  --muted: #8a8578;
+  --accent: #e05a33;
+  --accent-fg: #fff;
+  --danger: #dc2626;
+  --radius: 0.5rem;
+  --font-heading: 'Space Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== Header ===== */
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ===== Main Content ===== */
+main {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ===== Live Stats ===== */
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.stats strong {
+  color: var(--fg);
+}
+
+/* ===== Textarea ===== */
+textarea {
+  width: 100%;
+  min-height: 280px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  padding: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  resize: vertical;
+  font-family: var(--font-body);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 90, 51, 0.15);
+}
+
+textarea::placeholder {
+  color: var(--muted);
+}
+
+/* ===== Font Selector ===== */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.font-label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+select {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 90, 51, 0.15);
+}
+
+/* ===== Action Buttons ===== */
+.actions {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-danger {
+  border-color: rgba(220, 38, 38, 0.3);
+  color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(1rem);
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hidden {
+  display: block; /* keep in DOM but invisible */
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  textarea {
+    min-height: 200px;
+  }
+
+  h1 {
+    font-size: 1.375rem;
+  }
+}
+
+@media (min-width: 768px) {
+  textarea {
+    min-height: 360px;
+  }
+}
